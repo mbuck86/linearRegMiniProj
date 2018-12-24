@@ -273,4 +273,4 @@ summary(enReg3.3)
 # regionMidwest  4.632e+01  2.254e+01   2.054 0.046675 *  
 
 # Looking at this infromation there are definitely differences between each region, with South having ** significance and 
-# east having no sginificance. the south coefficent is also higher than both other regions by a decent amount.
+# east having no sginificance. The south coefficent is also higher than both other regions by a decent amount. 
