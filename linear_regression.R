@@ -181,6 +181,7 @@ enReg4 <- lm(energy ~ metro + green, data = nrg)
 summary(enReg4)
 plot(enReg4)
 
+
 # I think model 4 is slightly worse than model three, so if I had to pick a model I think it would be model 3, but
 # I'm still not particularly happy with it. my guess is the best model of this wouldn't include metro at all
 # since it seems to have no significance in most models I make with this.
@@ -250,5 +251,26 @@ coef(summary(lm(csat ~ C(region, contr.helmert),
 ##   1. Add on to the regression equation that you created in exercise 1 by
 ##      generating an interaction term and testing the interaction.
 
+# So, adding to enReg3(enReg3 <- lm(energy ~ metro + area + green, data = nrg)), I'm going to add an interaction to this model.
+# I am going to add the interaction between population*area, as that might be something that determines energy use.
+enReg3.1 <- lm(energy ~ metro + area + green + pop*area, data = nrg)
+summary(enReg3.1)
+#it seems this variable is useful and has no significance. I'm going to try another interaction just for the sake of it.
+# I think I will try adding the interation between Toxic and green(variables that represent toxic chemicals and greenhouse gases released)
+enReg3.2 <- lm(energy ~ metro + area + green + toxic*green, data = nrg)
+summary(enReg3.2)
+#This new interaction has ** significance, so I think it definitely adds to the model, mucha better than the first interaction I tried.
+
 ##   2. Try adding region to the model. Are there significant differences
 ##      across the four regions?
+
+nrg$region <- factor(nrg$region)
+enReg3.3 <- lm(energy ~ metro + area + green + toxic*green + region, data = nrg)
+summary(enReg3.3)
+
+# regionN. East  2.246e+01  2.890e+01   0.777 0.441905    
+# regionSouth    6.905e+01  2.184e+01   3.162 0.003030 ** 
+# regionMidwest  4.632e+01  2.254e+01   2.054 0.046675 *  
+
+# Looking at this infromation there are definitely differences between each region, with South having ** significance and 
+# east having no sginificance. the south coefficent is also higher than both other regions by a decent amount.
