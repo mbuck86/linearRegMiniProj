@@ -255,11 +255,11 @@ coef(summary(lm(csat ~ C(region, contr.helmert),
 # I am going to add the interaction between population*area, as that might be something that determines energy use.
 enReg3.1 <- lm(energy ~ metro + area + green + pop*area, data = nrg)
 summary(enReg3.1)
-#it seems this variable is useful and has no significance. I'm going to try another interaction just for the sake of it.
-# I think I will try adding the interation between Toxic and green(variables that represent toxic chemicals and greenhouse gases released)
+#it seems this variable isn't useful and has no significance. I'm going to try another interaction just for the sake of it.
+# I think I will try adding the interaction between Toxic and green(variables that represent toxic chemicals and greenhouse gases released)
 enReg3.2 <- lm(energy ~ metro + area + green + toxic*green, data = nrg)
 summary(enReg3.2)
-#This new interaction has ** significance, so I think it definitely adds to the model, mucha better than the first interaction I tried.
+#This new interaction has ** significance, so I think it definitely adds to the model, much better than the first interaction I tried.
 
 ##   2. Try adding region to the model. Are there significant differences
 ##      across the four regions?
